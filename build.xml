@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+ <project name="MariaLaba" default="run">
+    
+	<!-- define names of directories -->
+     <target name="get_properties">
+	  <property file="ant.properties" />
+	 
+	 <path id="classpath.source">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+ 	  <echo> Imported properties and path </echo>
+     </target>
+	      
+	 <!-- compile -->
+	 <target name="compile" depends="get_properties">
+        <echo message="Compiling..."/>
+        <mkdir dir="${compiled.classes}"/>
+        <mkdir dir="${compiled.tests}"/>
+        <javac destdir="${compiled.classes}" includeantruntime="false">
+            <src path="${main}"/>
+            <classpath>
+                <pathelement location="${compiled.classes}"/>
+                <path refid="classpath.source"/>
+            </classpath>
+        </javac>
+        <javac destdir="${compiled.tests}" includeantruntime="false">
+            <src path="${test}"/>
+            <classpath>
+                <pathelement location="${compiled.classes}"/>
+                <path refid="classpath.source"/>
+            </classpath>
+        </javac>
+    </target>
+
+	<!-- build -->
+    <target name="build" depends="compile">
+        <echo message="Building..."/>
+        <jar destfile="${dest.jar}" basedir="${compiled.classes}" compress="false" index="true">
+            <manifest>
+                <attribute name="Main-Class" value="com.company.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+	<!-- clean -->
+    <target name="clean">
+        <echo message="Clean..."/>
+        <delete dir="${compiled}"/>
+    </target>
+
+	<!-- test -->
+    <target name="test" depends="build">
+        <echo message="Testing..."/>
+        <junit fork="true" printsummary="on" showoutput="yes">
+            <formatter type="xml"/>
+            <classpath>
+                <path refid="classpath.source"/>
+                <pathelement location="${compiled.classes}"/>
+                <pathelement location="${compiled.tests}"/>
+            </classpath>
+            <batchtest todir="reports">
+                <fileset dir="${test}" includes="*Test*.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+	<!-- doc -->
+    <target name="doc" depends="compile">
+	
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}"/>
+
+		<tempfile property="manifest.file" suffix=".mf"/>
+		<echo file="${manifest.file}">
+			MD5: ${md5.file}
+			SHA-1: ${sha1.file}
+		</echo>
+
+		<jar update="true" destfile="${doc.dir}/api.jar">
+			<fileset dir="${doc.dir}"/>
+			<manifest>
+				<attribute name="Custom-Manifest" value="${manifest.file}"/>
+			</manifest>
+		</jar>
+	</target>
+
+    <!-- report -->
+    <target name="report" depends="test">
+	
+		<junit printsummary="yes" fork="true" >
+			<classpath>
+				<path location="test"/> 
+				<path refid="classpath.source"/> 
+				<pathelement location="compiled.classes"/> 
+				<pathelement location="test"/> 
+			</classpath>
+			<formatter type="xml"/>
+			<batchtest todir="test">
+				<fileset dir="test">
+					<include name="*Test*.java"/> 
+				</fileset>
+			</batchtest>
+		</junit>
+
+		 <!-- Add the report to the SVN repository and commit -->
+		<exec executable="svn">
+			<arg value="add"/>
+			<arg value="${report.dir}"/>
+		</exec>
+		<exec executable="svn">
+			<arg value="commit"/>
+			<arg value="${report.dir}"/>
+			<arg value="-m"/>
+			<arg value="JUnit test report"/>
+		</exec>
+	</target>
+	
+ </project>
