@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="LAPTOP-EOJVJGMR" name="AreaTest" skipped="0" tests="1" time="0.0" timestamp="2023-05-16T17:52:16">
+<testsuite errors="1" failures="0" hostname="LAPTOP-EOJVJGMR" name="AreaTest" skipped="0" tests="1" time="0.0" timestamp="2023-05-17T11:07:22">
   <properties>
     <property name="ant.library.dir" value="C:\Program Files\apache-ant-1.10.13\lib" />
     <property name="ant.file.type" value="file" />
@@ -20,7 +20,7 @@
     <property name="user.country" value="RU" />
     <property name="compiled.tests" value="target/tests" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner AreaTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\munic\OneDrive\Рабочий стол\laba\test\TEST-AreaTest.xml crashfile=C:\Users\munic\OneDrive\Рабочий стол\laba\junitvmwatcher6307813589528791743.properties propsfile=C:\Users\munic\OneDrive\Рабочий стол\laba\junit17902508018670477772.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner AreaTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\munic\OneDrive\Рабочий стол\laba\test\TEST-AreaTest.xml crashfile=C:\Users\munic\OneDrive\Рабочий стол\laba\junitvmwatcher11125219807130609538.properties propsfile=C:\Users\munic\OneDrive\Рабочий стол\laba\junit4353145594795441429.properties" />
     <property name="jdk.debug" value="release" />
     <property name="test" value="test" />
     <property name="sun.cpu.endian" value="little" />
@@ -67,6 +67,7 @@
     <property name="ant.version" value="Apache Ant(TM) version 1.10.13 compiled on January 4 2023" />
     <property name="java.library.path" value="C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\apache-ant-1.10.13\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\munic\AppData\Local\Microsoft\WindowsApps;C:\Users\munic\.dotnet\tools;C:\Users\munic\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\munic\AppData\Local\GitHubDesktop\bin;;." />
     <property name="java.vendor" value="Oracle Corporation" />
+    <property name="manifest.file" value="MANIFEST" />
     <property name="stderr.encoding" value="Cp1251" />
     <property name="java.vm.info" value="mixed mode, sharing" />
     <property name="java.vm.version" value="20.0.1+9-29" />

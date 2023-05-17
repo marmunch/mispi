@@ -11,6 +11,16 @@
 
  	  <echo> Imported properties and path </echo>
      </target>
+	 
+	 <macrodef name="generate-hash" description="Генерация хешей файлов проекта и запись в MANIFEST.MF">
+        <attribute name="algorithm"/>
+        <sequential>
+            <signjar jar="target/${ant.project.name}.war"
+                     alias="ant_keystore"
+                     storepass="password"
+                     digestalg="@{algorithm}"/>
+        </sequential>
+    </macrodef>
 	      
 	 <!-- compile -->
 	 <target name="compile" depends="get_properties">
@@ -47,6 +57,7 @@
     <target name="clean">
         <echo message="Clean..."/>
         <delete dir="${compiled}"/>
+		<delete dir="doc"/>
     </target>
 
 	<!-- test -->
@@ -70,11 +81,10 @@
 	
 		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}"/>
 
-		<tempfile property="manifest.file" suffix=".mf"/>
-		<echo file="${manifest.file}">
-			MD5: ${md5.file}
-			SHA-1: ${sha1.file}
-		</echo>
+		<echo>Генерация SHA1 хешей...</echo>
+        <generate-hash algorithm="SHA1"/>
+        <echo>Генерация MD5 хешей...</echo>
+        <generate-hash algorithm="MD5"/>
 
 		<jar update="true" destfile="${doc.dir}/api.jar">
 			<fileset dir="${doc.dir}"/>
@@ -105,11 +115,10 @@
 		 <!-- Add the report to the SVN repository and commit -->
 		<exec executable="svn">
 			<arg value="add"/>
-			<arg value="${report.dir}"/>
+			<arg value="*"/>
 		</exec>
 		<exec executable="svn">
 			<arg value="commit"/>
-			<arg value="${report.dir}"/>
 			<arg value="-m"/>
 			<arg value="JUnit test report"/>
 		</exec>
