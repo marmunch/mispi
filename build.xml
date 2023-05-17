@@ -86,12 +86,19 @@
         <echo>Генерация MD5 хешей...</echo>
         <generate-hash algorithm="MD5"/>
 
-		<jar update="true" destfile="${doc.dir}/api.jar">
-			<fileset dir="${doc.dir}"/>
-			<manifest>
-				<attribute name="Custom-Manifest" value="${manifest.file}"/>
-			</manifest>
-		</jar>
+        <javadoc destdir="${doc.dir}"
+                 author="true"
+                 version="true"
+                 use="true">
+            <classpath refid="classpath.source"/>
+            <fileset dir="${main}"/>
+        </javadoc>
+
+        <echo>Сборка jar-архива с javadoc...</echo>
+        <jar destfile="${doc.dir}/JavaDoc.jar"
+             basedir="${doc.dir}"
+             update="true">
+        </jar>
 	</target>
 
     <!-- report -->
